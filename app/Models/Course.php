@@ -9,7 +9,15 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'name', 'description', 'image'];
+    protected $fillable = ['name', 'description', 'image'];
 
+    public function teacher()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
+    }
 }

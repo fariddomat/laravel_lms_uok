@@ -145,4 +145,28 @@ class CourseController extends Controller
         $course->delete();
         return redirect()->route('dashboard.courses.index')->with('success', 'Course deleted successfully!');
     }
+
+    // teacher
+    public function attachUser(Request $request, $courseId)
+    {
+        $course = Course::findOrFail($courseId);
+        $userId = $request->input('user_id');
+
+        $course->teacher()->attach($userId);
+
+        // Return a response, e.g., redirect or JSON
+        return redirect()->back()->with('success', 'User added to the course.');
+    }
+
+    // teacher
+    public function detachUser(Request $request, $courseId)
+    {
+        $course = Course::findOrFail($courseId);
+        $userId = $request->input('user_id');
+
+        $course->teacher()->detach($userId);
+
+        // Return a response
+        return redirect()->back()->with('success', 'User removed from the course.');
+    }
 }
