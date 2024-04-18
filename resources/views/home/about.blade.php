@@ -1,128 +1,192 @@
 <x-site-layout>
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="{{asset('home')}}/img/breadcrumb/classes-breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-text">
-                        <h2>About</h2>
-                        <div class="breadcrumb-option">
-                            <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                            <span>About</span>
-                        </div>
-                    </div>
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">من نحن</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a class="text-white" href="{{ route('home') }}">الرئيسية</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">من نحن</li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Breadcrumb Section End -->
+    </div>
+    <!-- Header End -->
 
-    <!-- About Section Begin -->
-    <section class="about-section about-page spad">
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="about-pic">
-                        <img src="{{asset('home')}}/img/about-pic.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="about-text">
-                        <h2>Story About Us</h2>
-                        <p class="first-para">Lorem ipsum proin gravida nibh vel velit auctor aliquet. Aenean pretium
-                            sollicitudin, nascetur auci elit consequat ipsutissem niuis sed odio sit amet nibh vulputate
-                            cursus a amet.</p>
-                        <p class="second-para">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, gravida
-                            quam semper libero sit amet.</p>
-                        <img src="{{asset('home')}}/img/about-signature.png" alt="">
-                        <div class="at-author">
-                            <h4>Lettie Chavez</h4>
-                            <span>CEO - Founder</span>
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">أفضل المدرسين</h5>
+                            <p></p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- About Section End -->
-
-    <!-- About Counter Section Begin -->
-    <div class="about-counter">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="about-counter-text">
-                        <div class="single-counter">
-                            <h1 class="counter-num count">{{ App\Models\Category::count() }}</h1>
-                            <p>Categories</p>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-globe text-primary mb-4"></i>
+                            <h5 class="mb-3">صفوف أفتراضية</h5>
+                            <p></p>
                         </div>
-                        <div class="single-counter">
-                            <h1 class="counter-num count">{{ App\Models\Train::count() }}</h1>
-                            <p>Traines</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-home text-primary mb-4"></i>
+                            <h5 class="mb-3">واجبات منزلية</h5>
+                            <p></p>
                         </div>
-                        <div class="single-counter">
-                            <h1 class="counter-num count">{{ App\Models\User::role('trainee')->count() }}</h1>
-                            <p>Members</p>
-                        </div>
-                        <div class="single-counter">
-                            <h1 class="counter-num count">{{ $coaches->count() }}</h1>
-                            <p>Coaches</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
+                            <h5 class="mb-3">مكتبة شاملة</h5>
+                            <p></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- About Counter Section End -->
+    <!-- Service End -->
 
-    <!-- Banner Section Begin -->
-    <section class="banner-section set-bg" data-setbg="{{asset('home')}}/img/banner-bg.jpg">
+
+    <!-- About Start -->
+    <div class="container-xxl py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="banner-text">
-                        <h2>Get training today</h2>
-                        <p>Gimply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                            industry’s standard.</p>
-                        <a href="{{ route('contact') }}" class="primary-btn banner-btn">Contact Now</a>
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100"src="{{ asset('/home') }}/img/about.jpg" alt="" style="object-fit: cover;">
                     </div>
                 </div>
-                <div class="col-lg-5">
-                    <img src="{{asset('home')}}/img/banner-person.png" alt="">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">من نحن</h6>
+                    <h1 class="mb-4">مرحبا بك في منصتنا التعليمية </h1>
+                    <p class="mb-4">نقدم التعلم الالكتروني كما لم تشهده من قبل</p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>مدرسن مميزين</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>صفوف افتراضية</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>متابعة يومية</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>اختبارات شاملة</p>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="">قراءة المزيد</a>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Banner Section End -->
+    </div>
+    <!-- About End -->
 
-  <!-- Trainer Section Begin-->
-  <section class="trainer-section  about-trainer spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>EXPERT COACHES</h2>
-                </div>
+
+    <!-- Team Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">الاساتذة</h6>
+                <h1 class="mb-5">أفضل الاساتذة</h1>
             </div>
-        </div>
-        <div class="row">
-            @foreach ($coaches as $user)
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-trainer-item">
-                        <img src="{{ asset($user->image) }}" alt="">
-                        <div class="trainer-text">
-                            <h5>{{ $user->name }}</h5>
-                            <span>{{ $user->email }}</span>
-
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item bg-light">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid"src="{{ asset('/home') }}/img/team-1.jpg" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">المدرس 1</h5>
+                            <small>فيزياء</small>
                         </div>
                     </div>
                 </div>
-            @endforeach
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item bg-light">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid"src="{{ asset('/home') }}/img/team-2.jpg" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">المدرس 2</h5>
+                            <small>لغة عربية</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item bg-light">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid"src="{{ asset('/home') }}/img/team-3.jpg" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">المدرس 3</h5>
+                            <small>علم الاحياء</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="team-item bg-light">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid"src="{{ asset('/home') }}/img/team-4.jpg" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">المدرس 4</h5>
+                            <small>الكيمياء</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</section>
-<!-- Trainer Section End -->
+    <!-- Team End -->
+
+
 
 </x-site-layout>
 

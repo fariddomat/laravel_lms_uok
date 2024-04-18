@@ -44,7 +44,7 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>LMS</h2>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -52,13 +52,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">الرئيسية</a>
-                <a href="courses.html" class="nav-item nav-link">المقررات الدراسية</a>
+                <a href="{{ route('home') }}" class="nav-item nav-link active">الرئيسية</a>
+                <a href="{{ route('courses') }}" class="nav-item nav-link">المقررات الدراسية</a>
                 <a href="quiz.html" class="nav-item nav-link">الاختبارات</a>
-                <a href="about.html" class="nav-item nav-link">حول الموقع</a>
-                <a href="contact.html" class="nav-item nav-link">اتصل بنا</a>
+                <a href="{{ route('about') }}" class="nav-item nav-link">حول الموقع</a>
+                <a href="{{ route('contact') }}" class="nav-item nav-link">اتصل بنا</a>
             </div>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">تسجيل الدخول<i class="fa fa-arrow-right ms-3"></i></a>
+            <a href="{{ route('login') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">تسجيل الدخول<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->

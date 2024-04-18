@@ -10,7 +10,7 @@
                     <h1 class="display-3 text-white animated slideInDown">المقررات الدراسية</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a class="text-white" href="#">الرئيسية</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="{{ route('home') }}">الرئيسية</a></li>
                             <li class="breadcrumb-item text-white active" aria-current="page">المقررات الدراسية</li>
                         </ol>
                     </nav>

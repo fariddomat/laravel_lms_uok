@@ -36,8 +36,7 @@ class SiteController extends Controller
 
     public function about()
     {
-        $coaches = User::role('coach')->get();
-        return view('home.about',compact('coaches'));
+        return view('home.about');
     }
 
     public function contact()
