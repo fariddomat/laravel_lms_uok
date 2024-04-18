@@ -18,7 +18,7 @@
                 info: false,
                 columnDefs: [{
                     orderable: false,
-                    targets: [4]
+                    targets: [3]
                 }],
             });
 

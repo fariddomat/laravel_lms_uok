@@ -14,7 +14,7 @@ class SiteController extends Controller
 {
     public function index()
     {
-        $courses = Course::with('user')->get();
+        $courses = Course::limit(6)->get();
         $teachers = User::role('teacher')->get();
         return view('welcome', compact('courses', 'teachers'));
     }
@@ -36,7 +36,8 @@ class SiteController extends Controller
 
     public function about()
     {
-        return view('home.about');
+        $teachers = User::role('teacher')->get();
+        return view('home.about',compact('teachers'));
     }
 
     public function contact()

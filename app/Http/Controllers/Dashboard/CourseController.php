@@ -55,13 +55,13 @@ class CourseController extends Controller
             $image = $request->file('image');
             $directory = '/uploads/courses'; // Replace with the desired directory
             $helper = new ImageHelper;
-            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 400, 400);
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
             // Save the full path with name in the database
             $imagePath = $fullPath;
         }
 
         $course = Course::create([
-            'user_id' => $request->user_id,
+            'name' => $request->name,
             'description' => $request->description,
             'image' => $imagePath ?? null, // Store image path or null
         ]);
@@ -114,7 +114,7 @@ class CourseController extends Controller
             $image = $request->file('image');
             $directory = '/uploads/courses'; // Replace with the desired directory
             $helper = new ImageHelper;
-            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 400, 400);
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
             // Save the full path with name in the database
             $imagePath = $fullPath;
         }
