@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [SiteController::class, 'index'])->name('home');
 Route::get('/courses', [SiteController::class, 'courses'])->name('courses');
 Route::get('/courses/{id}', [SiteController::class, 'course'])->name('courses.show');
+Route::get('/lessons/{id}', [SiteController::class, 'lesson'])->name('lessons.show');
 
 Route::get('/about', [SiteController::class, 'about'])->name('about');
 Route::get('/contact-us', [SiteController::class, 'contact'])->name('contact');
@@ -50,7 +51,9 @@ Route::middleware(['role:admin||moderator'])->prefix('dashboard')->name('dashboa
     // Routes accessible to admins and coach
 
     Route::resource('courses', Dashboard\CourseController::class);
+    Route::get('/courses/{course}/lessons', [Dashboard\LessonController::class, 'viewCourseLessons'])->name('courses.lessons');
     Route::resource('lessons', Dashboard\LessonController::class);
+    Route::resource('lessons/{lesson}/files', Dashboard\LessonFileController::class)->except(['show', 'edit', 'update']);
 
 });
 

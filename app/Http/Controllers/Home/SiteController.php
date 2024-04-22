@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Contact;
+use App\Models\Lesson;
 use App\Models\Schedule;
 use App\Models\Train;
 use App\Models\User;
@@ -30,6 +31,12 @@ class SiteController extends Controller
     {
         $course = Course::findOrFail($id);
         return view('home.course', compact('course'));
+    }
+
+    public function lesson($id)
+    {
+        $lesson = Lesson::findOrFail($id);
+        return view('home.lesson', compact('lesson'));
     }
 
 

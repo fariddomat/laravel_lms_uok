@@ -107,7 +107,10 @@
                                     class="collapse @if ($index == 0) show @endif"
                                     aria-labelledby="heading10{{ $index + 1 }}" data-parent="#accordion100">
                                     <div class="card-body">
-                                        {!! $lesson->content !!}</div>
+                                        {!! $lesson->content !!}
+                                    <hr>
+                                    <a href="{{ route('lessons.show', $lesson) }}" class="btn btn-lg btn-primary">تصفح الدرس الآن</a>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach

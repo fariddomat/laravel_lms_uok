@@ -27,7 +27,7 @@
                 </li>
                 @if (auth()->user()->hasRole('admin'))
                 <li class="nav-item">
-                    <a class="nav-link text-white {{ Route::currentRouteName() == 'users.index' ? ' active bg-gradient-primary' : '' }}"
+                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard.users.index' ? ' active bg-gradient-primary' : '' }}"
                         href="{{ route('dashboard.users.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i style="font-size: 1.2rem;" class="fas fa-user-circle ps-2 pe-2 text-center"></i>
@@ -45,12 +45,21 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white  {{ Route::currentRouteName() == 'courses.index' ? ' active bg-gradient-primary' : '' }} "
+                    <a class="nav-link text-white  {{ Route::currentRouteName() == 'dashboard.courses.index' ? ' active bg-gradient-primary' : '' }} "
                         href="{{ route('dashboard.courses.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">view_in_ar</i>
                         </div>
                         <span class="nav-link-text ms-1">Courses</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white  {{ Route::currentRouteName() == 'dashboard.lessons.index' ? ' active bg-gradient-primary' : '' }} "
+                        href="{{ route('dashboard.lessons.index') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">view_in_ar</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Lessons</span>
                     </a>
                 </li>
 

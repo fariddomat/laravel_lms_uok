@@ -111,4 +111,10 @@ class LessonController extends Controller
         $lesson->delete();
         return redirect()->route('dashboard.lessons.index');
     }
+
+    public function viewCourseLessons(Course $course)
+    {
+        $lessons = $course->lessons;
+        return view('dashboard.lessons.index', compact('course', 'lessons'));
+    }
 }
