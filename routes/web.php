@@ -50,6 +50,7 @@ Route::middleware(['role:admin||moderator'])->prefix('dashboard')->name('dashboa
     // Routes accessible to admins and coach
 
     Route::resource('courses', Dashboard\CourseController::class);
+    Route::resource('lessons', Dashboard\LessonController::class);
 
 });
 

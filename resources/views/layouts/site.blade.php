@@ -30,6 +30,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('/home') }}/css/style.css" rel="stylesheet">
+    @yield('styles')
 </head>
 
 <body>
@@ -123,8 +124,11 @@
 
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{{ asset('home/js/jquery-3.2.1.min.js') }}"></script>
+    {{-- <script src="{{ asset('home/js/fontawesome-all.min.js') }}"></script> --}}
+
+    <script src="{{ asset('home/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('/home') }}/lib/wow/wow.min.js"></script>
     <script src="{{ asset('/home') }}/lib/easing/easing.min.js"></script>
     <script src="{{ asset('/home') }}/lib/waypoints/waypoints.min.js"></script>
@@ -132,6 +136,8 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('/home') }}/js/main.js"></script>
+
+    @yield('scripts')
 </body>
 
 </html>
