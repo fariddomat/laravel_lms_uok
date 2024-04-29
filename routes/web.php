@@ -54,7 +54,7 @@ Route::middleware(['role:admin||moderator'])->prefix('dashboard')->name('dashboa
     Route::get('/courses/{course}/lessons', [Dashboard\LessonController::class, 'viewCourseLessons'])->name('courses.lessons');
     Route::resource('lessons', Dashboard\LessonController::class);
     Route::resource('lessons/{lesson}/files', Dashboard\LessonFileController::class)->except(['show', 'edit', 'update']);
-
+    Route::resource('lessons.quizzes', Dashboard\QuizController::class);
 });
 
 require __DIR__ . '/auth.php';

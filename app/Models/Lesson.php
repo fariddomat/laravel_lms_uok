@@ -24,4 +24,9 @@ class Lesson extends Model
     public function lesson_files(){
         return $this->hasMany(LessonFile::class);
     }
+
+    public function quizzes()
+    {
+        return $this->hasMany(Quiz::class);
+    }
 }
