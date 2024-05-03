@@ -125,7 +125,7 @@
                         </div>
                         <div class="text-center p-4">
                             <h5 class="mb-0">{{ $user->name }}</h5>
-                            <small>فيزياء</small>
+                            <small>{{ $user->courses->first()->name??'' }}</small>
                         </div>
                     </div>
                 </div>

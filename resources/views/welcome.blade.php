@@ -136,7 +136,7 @@
                                 <img class="img-fluid" src="{{asset($course->image)}}" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                     <h5 class="m-0">{{ $course->name }}</h5>
-                                    <small class="text-primary">49 درس</small>
+                                    <small class="text-primary">{{ $course->lessons->count() }} درس</small>
                                 </div>
                             </a>
                         </div>
@@ -180,9 +180,9 @@
                             <h5 class="mb-4">{{ $course->name }}</h5>
                         </div>
                         <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>المدرس</small>
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>{{ $course->teachers->first()->name??'' }}</small>
                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 ساعة</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 طالب</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>{{ $course->students->count() }} طالب</small>
                         </div>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
                         </div>
                         <div class="text-center p-4">
                             <h5 class="mb-0">{{ $user->name }}</h5>
-                            <small>فيزياء</small>
+                            <small>{{ $user->courses->first()->name??'' }}</small>
                         </div>
                     </div>
                 </div>

@@ -11,9 +11,13 @@ class Course extends Model
 
     protected $fillable = ['name', 'description', 'image'];
 
-    public function teacher()
+    public function teachers()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsToMany(User::class,'lessons', 'user_id');
+    }
+
+    public function students(){
+        return $this->belongsToMany(User::class);
     }
 
     public function lessons()
