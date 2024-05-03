@@ -21,9 +21,6 @@
                     targets: [4]
                 }],
             });
-
-
-
         });
     </script>
     <script></script>
@@ -111,6 +108,21 @@
                                                     </div>
                                                 </td>
                                                 <td class="align-middle">
+
+
+                                                    <a rel="tooltip" class="btn btn-primary btn-link"
+                                                        href="{{ route('dashboard.files.index', $lesson) }}"
+                                                        data-original-title="" title="">
+                                                        <i class="material-icons">book</i>
+                                                        <div class="ripple-container"></div>
+                                                    </a>
+                                                    <a rel="tooltip" class="btn btn-secondary btn-link"
+                                                        href="{{ route('dashboard.lessons.quizzes.index', $lesson) }}"
+                                                        data-original-title="" title="">
+                                                        <i class="material-icons">quiz</i>
+                                                        <div class="ripple-container"></div>
+                                                    </a>
+
                                                     <a rel="tooltip" class="btn btn-success btn-link"
                                                         href="{{ route('dashboard.lessons.edit', $lesson) }}"
                                                         data-original-title="" title="">

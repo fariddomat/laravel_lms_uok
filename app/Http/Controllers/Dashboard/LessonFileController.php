@@ -15,7 +15,7 @@ class LessonFileController extends Controller
      */
     public function index(Lesson $lesson)
     {
-        $lessonFiles=$lesson->lesson_files();
+        $lessonFiles=$lesson->lesson_files;
         return view('dashboard.lessons.files.index', compact('lesson', 'lessonFiles'));
     }
 
@@ -48,19 +48,19 @@ class LessonFileController extends Controller
             'path' => $path,
         ]);
 
-        return redirect()->route('dashboard.lesson_files.index',);
+        return redirect()->route('dashboard.files.index', $lesson);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Lesson $lesson, LessonFile $lessonFile)
+    public function destroy(Lesson $lesson,  $lessonFile)
     {
-
+        $lessonFile= LessonFile::findOrFail($lessonFile);
         // Delete the file from storage
         Storage::delete($lessonFile->path);
         // Delete the database record
         $lessonFile->delete();
-        return redirect()->route('lesson_files.index');
+        return redirect()->route('dashboard.files.index', $lesson);
     }
 }

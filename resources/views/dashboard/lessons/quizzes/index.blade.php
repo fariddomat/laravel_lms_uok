@@ -65,7 +65,7 @@
                                                     onclick="event.preventDefault(); document.getElementById('delete-form-{{ $quiz->id }}').submit();">
                                                     <i class="material-icons">close</i>
                                                 </a>
-                                                <form id="delete-form-{{ $quiz->id }}" action="{{ route('dashboard.lessons.quiz.destroy', [$lesson, $quiz]) }}" method="POST" style="display: none;">
+                                                <form id="delete-form-{{ $quiz->id }}" action="{{ route('dashboard.lessons.quizzes.destroy', [$lesson, $quiz]) }}" method="POST" style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>

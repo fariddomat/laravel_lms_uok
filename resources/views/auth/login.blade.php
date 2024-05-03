@@ -35,7 +35,7 @@
 
                                     <!-- Email Address -->
                                     <div class="col-lg-12">
-                                        <x-input-label for="email" :value="__('االبريد الالكتروني')" />
+                                        <x-input-label for="email" :value="__('البريد الالكتروني')" />
                                         <x-text-input id="email" class="block mt-1 w-full" type="email"
                                             name="email" :value="old('email')" required autofocus
                                             autocomplete="username" />

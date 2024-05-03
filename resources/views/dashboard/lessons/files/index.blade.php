@@ -65,7 +65,7 @@
                                                     onclick="event.preventDefault(); document.getElementById('delete-form-{{ $lessonFile->id }}').submit();">
                                                     <i class="material-icons">close</i>
                                                 </a>
-                                                <form id="delete-form-{{ $lessonFile->id }}" action="{{ route('dashboard.lessons.files.destroy', [$lesson, $lessonFile]) }}" method="POST" style="display: none;">
+                                                <form id="delete-form-{{ $lessonFile->id }}" action="{{ route('dashboard.files.destroy', [$lesson, $lessonFile->id]) }}" method="POST" style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
