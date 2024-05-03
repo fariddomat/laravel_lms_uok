@@ -108,8 +108,10 @@
                                     aria-labelledby="heading10{{ $index + 1 }}" data-parent="#accordion100">
                                     <div class="card-body">
                                         {!! $lesson->content !!}
-                                    <hr>
+
+                                        <br><br>
                                     <a href="{{ route('lessons.show', $lesson) }}" class="btn btn-lg btn-primary">تصفح الدرس الآن</a>
+                                    <a href="{{ route('lessons.quiz', $lesson) }}" class="btn btn-lg btn-secondary">الاختبارات</a>
                                     </div>
                                 </div>
                             </div>

@@ -20,6 +20,7 @@ Route::get('/', [SiteController::class, 'index'])->name('home');
 Route::get('/courses', [SiteController::class, 'courses'])->name('courses');
 Route::get('/courses/{id}', [SiteController::class, 'course'])->name('courses.show');
 Route::get('/lessons/{id}', [SiteController::class, 'lesson'])->name('lessons.show');
+Route::get('/lessons/{id}/quiz', [SiteController::class, 'quiz'])->name('lessons.quiz');
 
 Route::get('/about', [SiteController::class, 'about'])->name('about');
 Route::get('/contact-us', [SiteController::class, 'contact'])->name('contact');

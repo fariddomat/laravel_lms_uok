@@ -39,6 +39,13 @@ class SiteController extends Controller
         return view('home.lesson', compact('lesson'));
     }
 
+    public function quiz($id)
+    {
+        $lesson = Lesson::findOrFail($id);
+        $quizzes=$lesson->quizzes;
+        return view('home.quiz', compact('lesson', 'quizzes'));
+    }
+
 
 
     public function about()

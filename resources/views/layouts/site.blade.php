@@ -55,7 +55,6 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="{{ route('home') }}" class="nav-item nav-link active">الرئيسية</a>
                 <a href="{{ route('courses') }}" class="nav-item nav-link">المقررات الدراسية</a>
-                <a href="quiz.html" class="nav-item nav-link">الاختبارات</a>
                 <a href="{{ route('about') }}" class="nav-item nav-link">حول الموقع</a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link">اتصل بنا</a>
             </div>
