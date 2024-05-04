@@ -46,13 +46,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // // teacher
-    // public function courses()
-    // {
-    //     return $this->belongsToMany(Course::class);
-    // }
+    // Student
+    public function studentCourses()
+    {
+        return $this->belongsToMany(Course::class);
+    }
 
+       /**
+     * Check if a course belongs to this user as a student.
+     *
+     * @param int $courseId
+     * @return bool
+     */
+    public function hasCourse($courseId)
+    {
+        return $this->studentCourses()->where('course_id', $courseId)->exists();
+    }
 
+    // teacher
     public function courses()
     {
         return $this->belongsToMany(Course::class,'lessons');

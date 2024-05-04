@@ -83,6 +83,20 @@
             </div>
 
             <div class="row g-4 justify-content-center">
+                <h2  class="col-md-8 offset-md-2"> @auth
+                        @if (auth()->user()->hasCourse($course->id))
+                            <a href="{{ route('student.unJoinCourse', $course) }}"
+                                class="flex-shrink-0 btn btn-lg btn-danger px-3">إلغاء الانضمام</a>
+                        @else
+                            <a href="{{ route('student.joinCourse', $course) }}"
+                                class="flex-shrink-0 btn btn-lg btn-success px-3">الانضمام</a>
+                        @endif
+                    @else
+                        <a href="{{ route('student.joinCourse', $course) }}"
+                            class="flex-shrink-0 btn btn-lg btn-success px-3">الانضمام</a>
+
+                    @endauth
+                </h2>
                 <div class="col-md-8 offset-md-2">
                     <div id="accordion100" class="tm-accordion">
                         @foreach ($course->lessons as $index => $lesson)
@@ -110,9 +124,15 @@
                                         {!! $lesson->content !!}
 
                                         <br><br>
-                                    <a href="{{ route('lessons.show', $lesson) }}" class="btn btn-lg btn-primary">تصفح الدرس الآن</a>
-                                    <a href="{{ route('lessons.quiz', $lesson) }}" class="btn btn-lg btn-secondary">الاختبارات</a>
-                                    </div>
+                                        @auth
+                        @if (auth()->user()->hasCourse($course->id))
+                                        <a href="{{ route('lessons.show', $lesson) }}"
+                                            class="btn btn-lg btn-primary">تصفح الدرس الآن</a>
+                                        <a href="{{ route('lessons.quiz', $lesson) }}"
+                                            class="btn btn-lg btn-secondary">الاختبارات</a>
+                                        @endif
+                                        @endauth
+                                        </div>
                                 </div>
                             </div>
                         @endforeach

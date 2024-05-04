@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Home;
 use App\Http\Controllers\Home\SiteController;
+use App\Http\Controllers\Home\StudentController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,28 @@ Route::get('/lessons/{id}/quiz', [SiteController::class, 'quiz'])->name('lessons
 Route::get('/about', [SiteController::class, 'about'])->name('about');
 Route::get('/contact-us', [SiteController::class, 'contact'])->name('contact');
 Route::post('/postContact', [SiteController::class, 'postContact'])->name('postContact');
+
+
+// Ensure that the user is authenticated for these routes
+Route::middleware(['auth'])->group(function () {
+    // Route for students to view all their courses
+    Route::get('/student/courses', [StudentController::class, 'courses'])->name('student.courses');
+
+    // Route for students to join a course
+    Route::get('/student/join-course/{courseId}', [StudentController::class, 'joinCourse'])->name('student.joinCourse');
+
+    // Route for students to unjoin a course
+    Route::get('/student/unjoin-course/{courseId}', [StudentController::class, 'unJoinCourse'])->name('student.unJoinCourse');
+
+    // Route for students to take a quiz
+    Route::get('/student/make-quiz/{quizId}', [StudentController::class, 'makeQuiz'])->name('student.makeQuiz');
+
+    // Route for students to submit quiz answers
+    Route::post('/student/store-quiz-answer/{quizId}', [StudentController::class, 'storeQuizAnswer'])->name('student.storeQuizAnswer');
+
+    // Route for students to view quiz results
+    Route::get('/student/quiz-results/{quizId}', [StudentController::class, 'quizResults'])->name('student.quizResults');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
