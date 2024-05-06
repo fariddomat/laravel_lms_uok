@@ -60,7 +60,7 @@
                 <h1 class="mb-5">الدروس الأكثر طلبا</h1>
             </div>
             <div class="row g-4 justify-content-center">
-                @foreach ($courses as $index => $course)
+                @foreach ($latestCourses as $index => $course)
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ 0.3 + $index / 8 }}s">
                         <div class="course-item bg-light">
                             <div class="position-relative overflow-hidden">

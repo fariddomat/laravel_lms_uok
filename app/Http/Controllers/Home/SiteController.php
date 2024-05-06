@@ -17,14 +17,17 @@ class SiteController extends Controller
     {
         $courses = Course::limit(6)->get();
         $teachers = User::role('teacher')->get();
-        return view('welcome', compact('courses', 'teachers'));
+        $latestCourses=Course::latest()->limit(3)->get();
+
+        return view('welcome', compact('courses', 'teachers', 'latestCourses'));
     }
 
     public function courses()
     {
         $courses = Course::all();
+        $latestCourses=Course::latest()->limit(3)->get();
 
-        return view('home.courses', compact('courses'));
+        return view('home.courses', compact('courses', 'latestCourses'));
     }
 
     public function course($id)
@@ -67,5 +70,5 @@ class SiteController extends Controller
     }
 
 
-    
+
 }

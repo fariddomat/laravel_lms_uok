@@ -45,8 +45,8 @@ class StudentController extends Controller
     {
         $user = Auth::user();
         $courses = $user->studentCourses;
-
-        return view('student.courses', compact('courses'));
+        $latestCourses=Course::latest()->limit(3)->get();
+        return view('home.courses', compact('courses', 'latestCourses'));
     }
 
     public function accessCourse($courseId)

@@ -55,10 +55,17 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="{{ route('home') }}" class="nav-item nav-link active">الرئيسية</a>
                 <a href="{{ route('courses') }}" class="nav-item nav-link">المقررات الدراسية</a>
+                <a href="{{ route('student.courses') }}" class="nav-item nav-link">مقرراتي</a>
                 <a href="{{ route('about') }}" class="nav-item nav-link">حول الموقع</a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link">اتصل بنا</a>
             </div>
+            @auth
+            <a href="{{ route('dashboard') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">لوحة التحكم<i class="fa fa-arrow-right ms-3"></i></a>
+
+            @else
             <a href="{{ route('login') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">تسجيل الدخول<i class="fa fa-arrow-right ms-3"></i></a>
+
+            @endauth
         </div>
     </nav>
     <!-- Navbar End -->

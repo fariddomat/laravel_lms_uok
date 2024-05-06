@@ -74,6 +74,8 @@ Route::middleware(['role:admin'])->prefix('dashboard')->name('dashboard.')->grou
 Route::middleware(['role:admin||moderator'])->prefix('dashboard')->name('dashboard.')->group(function () {
     // Routes accessible to admins and coach
 
+    Route::resource('blogs', Dashboard\BlogController::class);
+
     Route::resource('courses', Dashboard\CourseController::class);
     Route::get('/courses/{course}/lessons', [Dashboard\LessonController::class, 'viewCourseLessons'])->name('courses.lessons');
     Route::resource('lessons', Dashboard\LessonController::class);

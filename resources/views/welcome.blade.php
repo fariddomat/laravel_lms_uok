@@ -9,8 +9,8 @@
                         <div class="row justify-content-start">
                             <div class="col-sm-10 col-lg-8">
                                 <h5 class="text-primary text-uppercase mb-3 animated slideInDown"></h5>
-                                <h1 class="display-3 text-white animated slideInDown">أفضل منصة تعليمية</h1>
-                                <p class="fs-5 text-white mb-4 pb-2">ما لم يقدمه أحد من قبل</p>
+                                <h1 class="display-3 text-white animated slideInDown">أفضل منصة تعليمية لطلاب البكلوريا</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">الحصول على الشهادة الثانوية بأفضل طريقة</p>
                                 <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">قراة المزيد</a>
                             </div>
                         </div>
@@ -24,7 +24,7 @@
                         <div class="row justify-content-start">
                             <div class="col-sm-10 col-lg-8">
                                 <h5 class="text-primary text-uppercase mb-3 animated slideInDown"></h5>
-                                <h1 class="display-3 text-white animated slideInDown">أحصل على تعليمك المناسب من المنزل</h1>
+                                <h1 class="display-3 text-white animated slideInDown">أحصل على تعليمك المناسب لتحقق هدفك في الوصول للجامعة</h1>
                                 <p class="fs-5 text-white mb-4 pb-2">الوصول لكامل المواد التعليمية والاختبارات.</p>
                                 <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">قراءة المزيد</a>
                             </div>
@@ -157,7 +157,7 @@
                 <h1 class="mb-5">الدروس الأكثر طلبا</h1>
             </div>
             <div class="row g-4 justify-content-center">
-                @foreach ($courses as $index=>$course)
+                @foreach ($latestCourses as $index=>$course)
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ 0.3+($index/8) }}s">
                     <div class="course-item bg-light">
                         <div class="position-relative overflow-hidden">
