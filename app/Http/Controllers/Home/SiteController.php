@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Course;
 use App\Models\Contact;
 use App\Models\Lesson;
@@ -35,6 +36,20 @@ class SiteController extends Controller
         $course = Course::findOrFail($id);
         return view('home.course', compact('course'));
     }
+
+    public function blogs()
+    {
+        $blogs = Blog::latest()->get();
+
+        return view('home.blogs', compact('blogs'));
+    }
+
+    public function blog($id)
+    {
+        $blog = Blog::findOrFail($id);
+        return view('home.blog', compact('blog'));
+    }
+
 
     public function lesson($id)
     {

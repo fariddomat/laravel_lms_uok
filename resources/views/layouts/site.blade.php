@@ -56,6 +56,7 @@
                 <a href="{{ route('home') }}" class="nav-item nav-link active">الرئيسية</a>
                 <a href="{{ route('courses') }}" class="nav-item nav-link">المقررات الدراسية</a>
                 <a href="{{ route('student.courses') }}" class="nav-item nav-link">مقرراتي</a>
+                <a href="{{ route('blogs') }}" class="nav-item nav-link">المقالات</a>
                 <a href="{{ route('about') }}" class="nav-item nav-link">حول الموقع</a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link">اتصل بنا</a>
             </div>

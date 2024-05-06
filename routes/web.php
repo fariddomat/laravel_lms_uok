@@ -17,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/dashboard/home', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
 Route::get('/', [SiteController::class, 'index'])->name('home');
 Route::get('/courses', [SiteController::class, 'courses'])->name('courses');
 Route::get('/courses/{id}', [SiteController::class, 'course'])->name('courses.show');
@@ -27,6 +33,9 @@ Route::get('/about', [SiteController::class, 'about'])->name('about');
 Route::get('/contact-us', [SiteController::class, 'contact'])->name('contact');
 Route::post('/postContact', [SiteController::class, 'postContact'])->name('postContact');
 
+
+Route::get('/blogs', [SiteController::class, 'blogs'])->name('blogs');
+Route::get('/blogs/{id}', [SiteController::class, 'blog'])->name('blogs.show');
 
 // Ensure that the user is authenticated for these routes
 Route::middleware(['auth'])->group(function () {
@@ -48,10 +57,6 @@ Route::middleware(['auth'])->group(function () {
     // Route for students to view quiz results
     Route::get('/student/quiz-results/{quizId}', [StudentController::class, 'quizResults'])->name('student.quizResults');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -81,6 +86,11 @@ Route::middleware(['role:admin||moderator'])->prefix('dashboard')->name('dashboa
     Route::resource('lessons', Dashboard\LessonController::class);
     Route::resource('lessons/{lesson}/files', Dashboard\LessonFileController::class)->except(['show', 'edit', 'update']);
     Route::resource('lessons.quizzes', Dashboard\QuizController::class);
+
+
+    Route::get('/imageGallery/browser', [Dashboard\ImageGalleryController::class, 'browser'])->name('imageGallery.browser');
+    Route::post('/imageGallery/uploader', [Dashboard\ImageGalleryController::class, 'uploader'])->name('imageGallery.uploader');
+
 });
 
 require __DIR__ . '/auth.php';
