@@ -61,6 +61,8 @@
                         <span class="nav-link-text ms-1">Blogs</span>
                     </a>
                 </li>
+                @endif
+                @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('moderator')|| auth()->user()->hasRole('teacher'))
                 <li class="nav-item">
                     <a class="nav-link text-white  {{ Route::currentRouteName() == 'dashboard.courses.index' ? ' active bg-gradient-primary' : '' }} "
                         href="{{ route('dashboard.courses.index') }}">

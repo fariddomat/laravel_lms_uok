@@ -70,23 +70,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function () {
-
+    Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+    Route::delete('favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+   
     // suggestion
 });
 Route::middleware(['role:admin'])->prefix('dashboard')->name('dashboard.')->group(function () {
     // Routes accessible only to admins
 
     Route::resource('users', Dashboard\UserController::class);
-    Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites.index');
-    Route::delete('favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
     Route::get('/contact', [Dashboard\HomeController::class, 'contact'])->name('contact');
 
 });
-
-Route::middleware(['role:admin||moderator'])->prefix('dashboard')->name('dashboard.')->group(function () {
+// teacher
+Route::middleware(['role:admin||moderator|teacher'])->prefix('dashboard')->name('dashboard.')->group(function () {
     // Routes accessible to admins and coach
 
-    Route::resource('blogs', Dashboard\BlogController::class);
 
     Route::resource('courses', Dashboard\CourseController::class);
     Route::get('/courses/{course}/lessons', [Dashboard\LessonController::class, 'viewCourseLessons'])->name('courses.lessons');
@@ -95,6 +94,17 @@ Route::middleware(['role:admin||moderator'])->prefix('dashboard')->name('dashboa
     Route::resource('lessons.quizzes', Dashboard\QuizController::class);
     Route::resource('comments', Dashboard\CommentController::class);
 
+
+
+    Route::get('/imageGallery/browser', [Dashboard\ImageGalleryController::class, 'browser'])->name('imageGallery.browser');
+    Route::post('/imageGallery/uploader', [Dashboard\ImageGalleryController::class, 'uploader'])->name('imageGallery.uploader');
+
+});
+
+Route::middleware(['role:admin||moderator'])->prefix('dashboard')->name('dashboard.')->group(function () {
+    // Routes accessible to admins and coach
+
+    Route::resource('blogs', Dashboard\BlogController::class);
 
 
     Route::get('/imageGallery/browser', [Dashboard\ImageGalleryController::class, 'browser'])->name('imageGallery.browser');

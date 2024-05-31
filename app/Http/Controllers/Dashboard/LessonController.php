@@ -17,7 +17,13 @@ class LessonController extends Controller
      */
     public function index()
     {
-        $lessons = Lesson::with('course', 'teacher')->get();
+        if (auth()->user()->hasRole('teacher')) {
+
+        $lessons = Lesson::where('user_id', auth()->id())->with('course', 'teacher')->get();
+        } else {
+            $lessons = Lesson::with('course', 'teacher')->get();
+        }
+
         return view('dashboard.lessons.index', compact('lessons'));
     }
 

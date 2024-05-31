@@ -33,11 +33,17 @@
                         <div class="mb-3 col-md-6">
                             <label class="form-label">Teacher</label>
                             <select name="user_id" class="form-control  border border-2 p-2">
+                                @if (auth()->user()->hasRole('teacher'))
+                                <option value="{{ auth()->user()->id }}">{{ auth()->user()->name }}</option>
+
+                                @else
                                 @foreach ($teachers as $teacher)
+
                                 <option value="{{ $teacher->id }}"  @if ($lesson->user_id == $teacher->id)
                                     selected
                                 @endif>{{ $teacher->name }}</option>
                                 @endforeach
+                                @endif
                             </select>
                             @error('user_id')
                                 <p class='text-danger inputerror'>{{ $message }} </p>
