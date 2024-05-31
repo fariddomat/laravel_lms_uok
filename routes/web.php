@@ -40,7 +40,11 @@ Route::get('/blogs/{id}', [SiteController::class, 'blog'])->name('blogs.show');
 
 // Ensure that the user is authenticated for these routes
 Route::middleware(['auth'])->group(function () {
-    // Route for students to view all their courses
+
+Route::post('favorites', [StudentController::class, 'favorite'])->name('favorites.store');
+Route::delete('favorites', [StudentController::class, 'destroyfavorite'])->name('favorites.destroy');
+Route::post('comments', [StudentController::class, 'comment'])->name('comments.store');
+// Route for students to view all their courses
     Route::get('/student/courses', [StudentController::class, 'courses'])->name('student.courses');
 
     // Route for students to join a course
@@ -74,7 +78,7 @@ Route::middleware(['role:admin'])->prefix('dashboard')->name('dashboard.')->grou
 
     Route::resource('users', Dashboard\UserController::class);
     Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites.index');
-Route::delete('favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+    Route::delete('favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
     Route::get('/contact', [Dashboard\HomeController::class, 'contact'])->name('contact');
 
 });

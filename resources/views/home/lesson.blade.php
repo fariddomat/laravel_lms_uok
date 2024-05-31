@@ -33,7 +33,6 @@
                     <h1 class="mb-5">محتوى الدرس</h1>
                 </div>
 
-
                 <!-- Lesson Description -->
                 <h3 class="mb-4 wow fadeInUp" data-wow-delay="0.2s">محتوى الدرس</h3>
 
@@ -51,6 +50,72 @@
                     </ul>
                 </div>
 
+                <!-- Favorite Button -->
+                <div class="favorite-section mt-4 wow fadeInUp" data-wow-delay="0.3s">
+                    @auth
+                        @php
+                            $isFavorited = \App\Models\Favorite::where('user_id', Auth::id())
+                                ->where('lesson_id', $lesson->id)
+                                ->exists();
+                        @endphp
+                        @if ($isFavorited)
+                            <form action="{{ route('favorites.destroy') }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
+                                <button type="submit" class="btn btn-danger">حذف من المفضلة</button>
+                            </form>
+                        @else
+                            <form action="{{ route('favorites.store') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
+                                <button type="submit" class="btn btn-warning">إضافة إلى المفضلة</button>
+                            </form>
+                        @endif
+                    @else
+                        <p>Please <a href="{{ route('login') }}">سجل دخول</a> للإضافة إلى المفضلة.</p>
+                    @endauth
+                </div>
+                <!-- Comments Section -->
+                <div class="comments-section mt-5 wow fadeInUp" data-wow-delay="0.3s">
+                    <h3 class="mb-3">التعليقات</h3>
+
+                    @if (session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
+
+                    <!-- Display Comments -->
+                    @foreach ($lesson->comments as $comment)
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $comment->user->name }}</h5>
+                                <p class="card-text">{{ $comment->comment }}</p>
+                                <p class="card-text"><small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small></p>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    <!-- Add Comment Form -->
+                    @auth
+                        <form action="{{ route('comments.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
+                            <div class="form-group">
+                                <label for="comment">تعليق</label>
+                                <textarea name="comment" id="comment" class="form-control" rows="3"></textarea>
+                                @error('comment')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">حفظ</button>
+                        </form>
+                    @else
+                        <p>Please <a href="{{ route('login') }}">سجل الدخول</a> لتتمكن من التعليق.</p>
+                    @endauth
+                </div>
                 <!-- FAQ Section -->
                 <div class="faq-section mt-5 wow fadeInUp" data-wow-delay="0.2s">
                     <h3 class="mb-3">الأسئلة الشائعة</h3>
@@ -90,8 +155,5 @@
             </div>
         </div>
     </div>
-
-
-
 
 </x-site-layout>

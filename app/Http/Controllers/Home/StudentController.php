@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\Favorite;
 use App\Models\Quiz;
 use App\Models\UserQuiz;
 use Illuminate\Support\Facades\Auth;
@@ -119,5 +121,52 @@ class StudentController extends Controller
         $userQuiz = UserQuiz::where('user_id', Auth::id())->where('quiz_id', $quizId)->firstOrFail();
 
         return view('student.quizResults', compact('userQuiz'));
+    }
+
+    public function favorite(Request $request)
+    {
+        $request->validate([
+            'lesson_id' => 'required|exists:lessons,id',
+        ]);
+
+        $favorite = Favorite::create([
+            'user_id' => Auth::id(),
+            'lesson_id' => $request->lesson_id,
+        ]);
+
+        return redirect()->back()->with('success', 'Added to favorites.');
+    }
+    public function destroyfavorite(Request $request)
+    {
+        $request->validate([
+            'lesson_id' => 'required|exists:lessons,id',
+        ]);
+
+        $favorite = Favorite::where('user_id', Auth::id())
+            ->where('lesson_id', $request->lesson_id)
+            ->first();
+
+        if ($favorite) {
+            $favorite->delete();
+            return redirect()->back()->with('success', 'Removed from favorites.');
+        }
+
+        return redirect()->back()->with('error', 'Favorite not found.');
+    }
+
+    public function comment(Request $request)
+    {
+        $request->validate([
+            'comment' => 'required|string',
+            'lesson_id' => 'required|exists:lessons,id',
+        ]);
+
+        Comment::create([
+            'comment' => $request->comment,
+            'user_id' => Auth::id(),
+            'lesson_id' => $request->lesson_id,
+        ]);
+
+        return redirect()->back()->with('success', 'Comment added successfully.');
     }
 }
