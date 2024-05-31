@@ -35,6 +35,15 @@
                         <span class="nav-link-text ms-1">Users</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard.favorites.index' ? ' active bg-gradient-primary' : '' }}"
+                        href="{{ route('dashboard.favorites.index') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i style="font-size: 1.2rem;" class="fas fa-heart ps-2 pe-2 text-center"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Favorites</span>
+                    </a>
+                </li>
                 @endif
 
 
@@ -68,6 +77,16 @@
                             <i class="material-icons opacity-10">view_in_ar</i>
                         </div>
                         <span class="nav-link-text ms-1">Lessons</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white  {{ Route::currentRouteName() == 'dashboard.comments.index' ? ' active bg-gradient-primary' : '' }} "
+                        href="{{ route('dashboard.comments.index') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">book</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Comments</span>
                     </a>
                 </li>
 

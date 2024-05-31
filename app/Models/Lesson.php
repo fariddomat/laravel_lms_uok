@@ -29,4 +29,9 @@ class Lesson extends Model
     {
         return $this->hasMany(Quiz::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

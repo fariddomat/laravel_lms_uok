@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Dashboard\FavoriteController;
 use App\Http\Controllers\Home;
 use App\Http\Controllers\Home\SiteController;
 use App\Http\Controllers\Home\StudentController;
@@ -72,6 +73,8 @@ Route::middleware(['role:admin'])->prefix('dashboard')->name('dashboard.')->grou
     // Routes accessible only to admins
 
     Route::resource('users', Dashboard\UserController::class);
+    Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+Route::delete('favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
     Route::get('/contact', [Dashboard\HomeController::class, 'contact'])->name('contact');
 
 });
@@ -86,6 +89,8 @@ Route::middleware(['role:admin||moderator'])->prefix('dashboard')->name('dashboa
     Route::resource('lessons', Dashboard\LessonController::class);
     Route::resource('lessons/{lesson}/files', Dashboard\LessonFileController::class)->except(['show', 'edit', 'update']);
     Route::resource('lessons.quizzes', Dashboard\QuizController::class);
+    Route::resource('comments', Dashboard\CommentController::class);
+
 
 
     Route::get('/imageGallery/browser', [Dashboard\ImageGalleryController::class, 'browser'])->name('imageGallery.browser');
