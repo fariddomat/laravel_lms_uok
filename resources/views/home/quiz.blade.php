@@ -29,36 +29,35 @@
                         <h1 class="mb-5">قائمة الاختبارات</h1>
                     </div>
 
-                    <form id="quiz-form">
+                    <form id="quiz-form" action="{{ route('quizzes.submit', $lesson->id) }}" method="POST">
+                        @csrf
                         @foreach ($quizzes as $index => $quiz)
                             <div class="question wow fadeInUp" data-wow-delay="0.2s">
                                 <h4>{{ $quiz->question }}</h4>
                                 <ul>
                                     <li>
-                                        <input type="radio" id="option1-1" name="option_1"
-                                            value="{{ $quiz->option_1 }}">
-                                        <label for="option1-1">{{ $quiz->option_1 }}</label>
+                                        <input type="radio" id="option1-{{ $quiz->id }}" name="quiz[{{ $quiz->id }}]"
+                                            value="1">
+                                        <label for="option1-{{ $quiz->id }}">{{ $quiz->option_1 }}</label>
                                     </li>
                                     <li>
-                                        <input type="radio" id="option1-1" name="option_2"
-                                            value="{{ $quiz->option_2 }}">
-                                        <label for="option1-1">{{ $quiz->option_2 }}</label>
+                                        <input type="radio" id="option2-{{ $quiz->id }}" name="quiz[{{ $quiz->id }}]"
+                                            value="2">
+                                        <label for="option2-{{ $quiz->id }}">{{ $quiz->option_2 }}</label>
                                     </li>
                                     <li>
-                                        <input type="radio" id="option1-1" name="option_3"
-                                            value="{{ $quiz->option_3 }}">
-                                        <label for="option1-1">{{ $quiz->option_3 }}</label>
+                                        <input type="radio" id="option3-{{ $quiz->id }}" name="quiz[{{ $quiz->id }}]"
+                                            value="3">
+                                        <label for="option3-{{ $quiz->id }}">{{ $quiz->option_3 }}</label>
                                     </li>
                                     <li>
-                                        <input type="radio" id="option1-1" name="option_4"
-                                            value="{{ $quiz->option_4 }}">
-                                        <label for="option1-1">{{ $quiz->option_4 }}</label>
+                                        <input type="radio" id="option4-{{ $quiz->id }}" name="quiz[{{ $quiz->id }}]"
+                                            value="4">
+                                        <label for="option4-{{ $quiz->id }}">{{ $quiz->option_4 }}</label>
                                     </li>
                                 </ul>
                             </div>
                         @endforeach
-
-                        <!-- Add more questions here -->
 
                         <button type="submit" class="submit-button wow fadeInUp btn btn-primary rounded" data-wow-delay="0.5s">إرسال</button>
                     </form>
@@ -66,11 +65,5 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
 
 </x-site-layout>

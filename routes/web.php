@@ -3,7 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Dashboard\FavoriteController;
+use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Home;
+use App\Http\Controllers\Home\QuizController;
 use App\Http\Controllers\Home\SiteController;
 use App\Http\Controllers\Home\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +66,10 @@ Route::post('comments', [StudentController::class, 'comment'])->name('comments.s
 });
 
 Route::middleware('auth')->group(function () {
+
+Route::get('lessons/{lesson}/quizzes', [QuizController::class, 'show'])->name('quizzes.show');
+Route::post('lessons/{lesson}/quizzes', [QuizController::class, 'submit'])->name('quizzes.submit');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::patch('/updateInfo', [ProfileController::class, 'updateInfo'])->name('profile.updateInfo');
@@ -72,7 +78,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function () {
     Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites.index');
     Route::delete('favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
-   
+    Route::get('/quizzes', [UserController::class, 'quizzes'])->name('quizzes');
     // suggestion
 });
 Route::middleware(['role:admin'])->prefix('dashboard')->name('dashboard.')->group(function () {

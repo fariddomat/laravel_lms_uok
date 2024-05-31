@@ -9,7 +9,12 @@ class UserQuiz extends Model
 {
     use HasFactory;
 
-    protected $guraded=[];
+    protected $fillable = [
+        'user_id',
+        'quiz_id',
+        'selected_option',
+        'is_correct'
+    ];
 
     public function user()
     {

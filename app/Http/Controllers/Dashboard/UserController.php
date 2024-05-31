@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserQuiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -144,5 +145,18 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect()->route('dashboard.users.index')->with('success', 'User deleted successfully!');
+    }
+
+    public function quizzes()
+    {
+        if (auth()->user()->hasRole('user')) {
+
+        $userQuizzes = UserQuiz::with('quiz')->where('user_id', auth()->id())->get();
+        } else {
+
+        $userQuizzes = UserQuiz::with('quiz')->get();
+        }
+
+        return view('dashboard.quizzes.index', compact('userQuizzes'));
     }
 }
