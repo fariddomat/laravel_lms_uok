@@ -114,7 +114,14 @@ class OnlineClasseController extends Controller
 
     public function index()
     {
-        $online_classes = OnlineClasse::all();
+        if (auth()->user()->hasRole('user')) {
+            $online_classes = auth()->user()->courses;
+        } elseif (auth()->user()->hasRole('teacher')) {
+            $online_classes = OnlineClasse::where('user_id', auth()->id())->get();
+        } else {
+            $online_classes = OnlineClasse::all();
+        }
+
         return view('dashboard.online_classes.index', compact('online_classes'));
     }
 
@@ -167,9 +174,10 @@ class OnlineClasseController extends Controller
         return redirect()->back();
     }
 
-    public function notify(Request $request,$id){
+    public function notify(Request $request, $id)
+    {
         try {
-            $online_classe=OnlineClasse::findOrFail($id);
+            $online_classe = OnlineClasse::findOrFail($id);
             $user = User::finfOrFail($online_classe->user->id);
             $info = array(
                 'name' => 'إشعار ',
@@ -187,7 +195,7 @@ class OnlineClasseController extends Controller
         } catch (\Throwable $th) {
             //throw $th;
 
-        session()->flash('success', 'لم يتم إرسال الاشعار بنجاح !');
+            session()->flash('success', 'لم يتم إرسال الاشعار بنجاح !');
         }
         return redirect()->back();
     }

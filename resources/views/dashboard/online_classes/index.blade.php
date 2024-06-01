@@ -60,8 +60,8 @@
                                     <td class="text-danger"><a href="{{ $online_classe->join_url }}"
                                             target="_blank">انضم الان</a></td>
                                     <td>
-                                        <a href="{{ route('dashboard.online_classes.notify', $online_classe->id) }}"
-                                            class="btn btn-sm btn-primary">إرسال إشعار</a>
+                                        {{-- <a href="{{ route('dashboard.online_classes.notify', $online_classe->id) }}"
+                                            class="btn btn-sm btn-primary">إرسال إشعار</a> --}}
                                         <form
                                             action="{{ route('dashboard.online_classes.destroy', $online_classe->id) }}"
                                             method="post" style="display: inline-block;">
