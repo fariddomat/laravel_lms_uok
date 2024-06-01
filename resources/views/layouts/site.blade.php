@@ -2,11 +2,15 @@
 <html lang="en" dir="rtl">
 
 <head>
+
     <meta charset="utf-8">
+
     <title>LMS</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <!-- Favicon -->
     <link href="{{ asset('/home') }}/img/favicon.ico" rel="icon">
@@ -30,6 +34,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('/home') }}/css/style.css" rel="stylesheet">
+    
     @yield('styles')
 </head>
 
@@ -145,6 +150,9 @@
     <script src="{{ asset('/home') }}/js/main.js"></script>
 
     @yield('scripts')
+    <script>
+        window.csrfToken = "{{ csrf_token() }}";
+    </script>
 </body>
 
 </html>

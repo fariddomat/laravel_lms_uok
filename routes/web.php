@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Dashboard\FavoriteController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Home;
 use App\Http\Controllers\Home\QuizController;
 use App\Http\Controllers\Home\SiteController;
 use App\Http\Controllers\Home\StudentController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,9 @@ Route::get('/dashboard/home', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::post('/pusher/auth', function() {
+    return Auth::user();
+});
 
 Route::get('/', [SiteController::class, 'index'])->name('home');
 Route::get('/courses', [SiteController::class, 'courses'])->name('courses');
@@ -42,6 +47,9 @@ Route::get('/blogs/{id}', [SiteController::class, 'blog'])->name('blogs.show');
 
 // Ensure that the user is authenticated for these routes
 Route::middleware(['auth'])->group(function () {
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::post('/chat', [ChatController::class, 'store'])->name('chat.store');
+    Route::get('/messages', [ChatController::class, 'fetchMessages'])->name('chat.fetchMessages');
 
 Route::post('favorites', [StudentController::class, 'favorite'])->name('favorites.store');
 Route::delete('favorites', [StudentController::class, 'destroyfavorite'])->name('favorites.destroy');
