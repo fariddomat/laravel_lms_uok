@@ -10,7 +10,7 @@ class ChatController extends Controller
 {
     public function index()
     {
-        $messages = Message::with('user')->get();
+        $messages = Message::with('user')->orderBy('id')->get();
         return view('chat.index', compact('messages'));
     }
 
@@ -30,7 +30,7 @@ class ChatController extends Controller
 
     public function fetchMessages()
     {
-        $messages = Message::with('user')->get();
+        $messages = Message::with('user')->orderBy('id')->get();
         return response()->json($messages);
     }
 
