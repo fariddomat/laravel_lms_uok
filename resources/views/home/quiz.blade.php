@@ -20,8 +20,8 @@
 
     <!-- Lesson Page Content -->
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
+        <div class="row" style="justify-content: center">
+            <div class="col-md-12 offset-md-2">
 
                 <div class="quiz-section">
                     <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -29,10 +29,10 @@
                         <h1 class="mb-5">قائمة الاختبارات</h1>
                     </div>
 
-                    <form id="quiz-form" action="{{ route('quizzes.submit', $lesson->id) }}" method="POST">
+                    <form id="quiz-form" class="row" action="{{ route('quizzes.submit', $lesson->id) }}" method="POST">
                         @csrf
                         @foreach ($quizzes as $index => $quiz)
-                            <div class="question wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="card col-md-5 mb-4 question wow fadeInUp" data-wow-delay="0.2s" style="margin-right: 1rem">
                                 <h4>{{ $quiz->question }}</h4>
                                 <ul>
                                     <li>
@@ -59,7 +59,11 @@
                             </div>
                         @endforeach
 
-                        <button type="submit" class="submit-button wow fadeInUp btn btn-primary rounded" data-wow-delay="0.5s">إرسال</button>
+                        <div class="col-md-12">
+
+
+                        <button type="submit" class="submit-button wow fadeInUp btn btn-primary rounded" data-wow-delay="0.5s" style="max-width: 120px">إرسال</button>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -115,7 +115,8 @@ class OnlineClasseController extends Controller
     public function index()
     {
         if (auth()->user()->hasRole('user')) {
-            $online_classes = auth()->user()->courses;
+            // dd(auth()->user()->studentCourses);
+            $online_classes = auth()->user()->studentCourses->flatMap->online_classes;
         } elseif (auth()->user()->hasRole('teacher')) {
             $online_classes = OnlineClasse::where('user_id', auth()->id())->get();
         } else {

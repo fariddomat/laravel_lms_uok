@@ -24,4 +24,8 @@ class Course extends Model
     {
         return $this->hasMany(Lesson::class);
     }
+    public function online_classes()
+    {
+        return $this->hasMany(OnlineClasse::class);
+    }
 }

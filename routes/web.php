@@ -87,6 +87,8 @@ Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(func
     Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites.index');
     Route::delete('favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
     Route::get('/quizzes', [UserController::class, 'quizzes'])->name('quizzes');
+    Route::get('online_classes/index', 'App\Http\Controllers\Dashboard\OnlineClasseController@index')->name('online_classes.index');
+
     // suggestion
 });
 Route::middleware(['role:admin'])->prefix('dashboard')->name('dashboard.')->group(function () {
@@ -100,7 +102,6 @@ Route::middleware(['role:admin'])->prefix('dashboard')->name('dashboard.')->grou
 Route::middleware(['role:admin||moderator|teacher'])->prefix('dashboard')->name('dashboard.')->group(function () {
     // Routes accessible to admins and coach
 
-    Route::get('online_classes/index', 'App\Http\Controllers\Dashboard\OnlineClasseController@index')->name('online_classes.index');
     Route::get('online_classes/create', 'App\Http\Controllers\Dashboard\OnlineClasseController@createView')->name('online_classes.create');
     Route::post('online_classes/store', 'App\Http\Controllers\Dashboard\OnlineClasseController@store')->name('online_classes.store');
     Route::get('online_classes/{id}/edit', 'App\Http\Controllers\Dashboard\OnlineClasseController@edit')->name('online_classes.edit');

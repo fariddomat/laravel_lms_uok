@@ -1,4 +1,30 @@
 <x-app-layout>
+    @section('scripts')
+
+    <script src="{{ asset('dashboard/js/libs/jquery.min.js') }}"></script>
+    <script type="text/javascript">
+        var imageGalleryBrowseUrl = "{{ route('dashboard.imageGallery.browser') }}";
+        var imageGalleryUploadUrl = "{{ route('dashboard.imageGallery.uploader') }}";
+    </script>
+    <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+    <script>
+
+        var imageGalleryBrowseUrl = "{{ route('dashboard.imageGallery.browser') }}";
+        var imageGalleryUploadUrl = "{{ route('dashboard.imageGallery.uploader') }}";
+            $(function() {
+                CKEDITOR.replace("content", {
+                    filebrowserBrowseUrl: imageGalleryBrowseUrl,
+                    filebrowserUploadUrl: imageGalleryUploadUrl +
+                        "?_token=" +
+                        $("meta[name=csrf-token]").attr("content"),
+                    removeButtons: "About",
+                    contentsLangDirection: 'rtl'
+                });
+
+            });
+        </script>
+@endsection
+
     <div class="container-fluid py-4 my-6">
         <div class="card card-body my-4 mx-md-4 mt-n6">
             <div class="row gx-4 mb-2">
