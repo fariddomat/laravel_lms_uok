@@ -92,6 +92,14 @@ Route::middleware(['role:admin'])->prefix('dashboard')->name('dashboard.')->grou
 Route::middleware(['role:admin||moderator|teacher'])->prefix('dashboard')->name('dashboard.')->group(function () {
     // Routes accessible to admins and coach
 
+    Route::get('online_classes/index', 'App\Http\Controllers\Dashboard\OnlineClasseController@index')->name('online_classes.index');
+    Route::get('online_classes/create', 'App\Http\Controllers\Dashboard\OnlineClasseController@createView')->name('online_classes.create');
+    Route::post('online_classes/store', 'App\Http\Controllers\Dashboard\OnlineClasseController@store')->name('online_classes.store');
+    Route::get('online_classes/{id}/edit', 'App\Http\Controllers\Dashboard\OnlineClasseController@edit')->name('online_classes.edit');
+    Route::delete('online_classes/{id}', 'App\Http\Controllers\Dashboard\OnlineClasseController@destroy')->name('online_classes.destroy');
+    Route::post('online_classes/notify/id', 'App\Http\Controllers\Dashboard\OnlineClasseController@notify')->name('online_classes.notify');
+
+
 
     Route::resource('courses', Dashboard\CourseController::class);
     Route::get('/courses/{course}/lessons', [Dashboard\LessonController::class, 'viewCourseLessons'])->name('courses.lessons');

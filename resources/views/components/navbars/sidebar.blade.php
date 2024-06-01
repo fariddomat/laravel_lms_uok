@@ -22,10 +22,10 @@
                 </a>
             </li>
 
-                <li class="nav-item mt-3">
-                    <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Users</h6>
-                </li>
-                @if (auth()->user()->hasRole('admin'))
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Users</h6>
+            </li>
+            @if (auth()->user()->hasRole('admin'))
                 <li class="nav-item">
                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard.users.index' ? ' active bg-gradient-primary' : '' }}"
                         href="{{ route('dashboard.users.index') }}">
@@ -35,27 +35,35 @@
                         <span class="nav-link-text ms-1">Users</span>
                     </a>
                 </li>
+            @endif
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard.favorites.index' ? ' active bg-gradient-primary' : '' }}"
+                    href="{{ route('dashboard.favorites.index') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1.2rem;" class="fas fa-heart ps-2 pe-2 text-center"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Favorites</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard.quizzes' ? ' active bg-gradient-primary' : '' }}"
+                    href="{{ route('dashboard.quizzes') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1.2rem;" class="fas fa-book ps-2 pe-2 text-center"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Quizzes</span>
+                </a>
+            </li>
 
-                @endif
-<li class="nav-item">
-                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard.favorites.index' ? ' active bg-gradient-primary' : '' }}"
-                        href="{{ route('dashboard.favorites.index') }}">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i style="font-size: 1.2rem;" class="fas fa-heart ps-2 pe-2 text-center"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Favorites</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard.quizzes' ? ' active bg-gradient-primary' : '' }}"
-                        href="{{ route('dashboard.quizzes') }}">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i style="font-size: 1.2rem;" class="fas fa-book ps-2 pe-2 text-center"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Quizzes</span>
-                    </a>
-                </li>
-
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard.online_classes.index' ? ' active bg-gradient-primary' : '' }}"
+                    href="{{ route('dashboard.online_classes.index') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1.2rem;" class="fas fa-camera ps-2 pe-2 text-center"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Online Classes</span>
+                </a>
+            </li>
 
             @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('moderator'))
                 <li class="nav-item mt-3">
@@ -70,8 +78,8 @@
                         <span class="nav-link-text ms-1">Blogs</span>
                     </a>
                 </li>
-                @endif
-                @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('moderator')|| auth()->user()->hasRole('teacher'))
+            @endif
+            @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('moderator') || auth()->user()->hasRole('teacher'))
                 <li class="nav-item">
                     <a class="nav-link text-white  {{ Route::currentRouteName() == 'dashboard.courses.index' ? ' active bg-gradient-primary' : '' }} "
                         href="{{ route('dashboard.courses.index') }}">
@@ -100,7 +108,6 @@
                         <span class="nav-link-text ms-1">Comments</span>
                     </a>
                 </li>
-
             @endif
 
             <li class="nav-item mt-3">
