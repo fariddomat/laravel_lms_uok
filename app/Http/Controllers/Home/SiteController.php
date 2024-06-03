@@ -25,6 +25,7 @@ class SiteController extends Controller
 
     public function courses()
     {
+        
         $courses = Course::all();
         $latestCourses=Course::latest()->limit(3)->get();
 

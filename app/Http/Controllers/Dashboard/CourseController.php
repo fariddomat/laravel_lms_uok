@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::paginate(10);
+        // ORM
+        $courses = Course::latest()->get();
         return view('dashboard.courses.index', compact('courses'));
     }
 
@@ -29,7 +31,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('dashboard.courses.create');
+        $categories=Category::all();
+        return view('dashboard.courses.create', compact('categories'));
     }
 
     /**
@@ -42,6 +45,7 @@ class CourseController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:courses',
+            'category_id' => 'required',
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -62,6 +66,7 @@ class CourseController extends Controller
 
         $course = Course::create([
             'name' => $request->name,
+            'category_id' => $request->category_id,
             'description' => $request->description,
             'image' => $imagePath ?? null, // Store image path or null
         ]);
@@ -88,7 +93,8 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        return view('dashboard.courses.edit', compact('course'));
+        $categories=Category::all();
+        return view('dashboard.courses.edit', compact('course', 'categories'));
     }
 
     /**
@@ -103,6 +109,7 @@ class CourseController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:courses,name,' . $course->id,
 
+            'category_id' => 'required',
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -124,6 +131,7 @@ class CourseController extends Controller
 
         $course->update([
             'name' => $request->name,
+            'category_id' => $request->category_id,
             'description' => $request->description,
             'image' => $imagePath ?? $course->image, // Update image path or keep old one
         ]);

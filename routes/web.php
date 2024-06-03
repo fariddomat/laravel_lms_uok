@@ -111,6 +111,7 @@ Route::middleware(['role:admin||moderator|teacher'])->prefix('dashboard')->name(
 
 
     Route::resource('courses', Dashboard\CourseController::class);
+
     Route::get('/courses/{course}/lessons', [Dashboard\LessonController::class, 'viewCourseLessons'])->name('courses.lessons');
     Route::resource('lessons', Dashboard\LessonController::class);
     Route::resource('lessons/{lesson}/files', Dashboard\LessonFileController::class)->except(['show', 'edit', 'update']);
@@ -128,6 +129,7 @@ Route::middleware(['role:admin||moderator'])->prefix('dashboard')->name('dashboa
     // Routes accessible to admins and coach
 
     Route::resource('blogs', Dashboard\BlogController::class);
+    Route::resource('categories', Dashboard\CategoryController::class);
 
 
     Route::get('/imageGallery/browser', [Dashboard\ImageGalleryController::class, 'browser'])->name('imageGallery.browser');

@@ -14,7 +14,19 @@
                             @enderror
                         </div>
 
-                        
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">Category</label>
+                            <select name="category_id" class="form-control border border-2 p-2">
+                                @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <p class='text-danger inputerror'>{{ $message }} </p>
+                            @enderror
+                        </div>
+
+
                         </div>
                         <div class="mb-3 col-md-12">
                             <label class="form-label">Image</label>

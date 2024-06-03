@@ -88,6 +88,15 @@
                         <span class="nav-link-text ms-1">Blogs</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white  {{ Route::currentRouteName() == 'dashboard.categories.index' ? ' active bg-gradient-primary' : '' }} "
+                        href="{{ route('dashboard.categories.index') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">book</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Categories</span>
+                    </a>
+                </li>
             @endif
             @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('moderator') || auth()->user()->hasRole('teacher'))
                 <li class="nav-item">

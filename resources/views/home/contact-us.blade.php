@@ -61,6 +61,14 @@
 
                 <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                     <form>
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">

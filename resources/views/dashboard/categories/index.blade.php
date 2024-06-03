@@ -16,10 +16,7 @@
                 searching: true,
                 paging: true,
                 info: false,
-                columnDefs: [{
-                    orderable: false,
-                    targets: [3]
-                }],
+
             });
 
 
@@ -39,10 +36,10 @@
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="row bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="col-6 text-white text-capitalize ps-3">Courses table</h6>
+                                <h6 class="col-6 text-white text-capitalize ps-3">Categories table</h6>
                                 <div class="col-6 text-end">
                                     <a class="btn bg-gradient-dark mb-0"
-                                        href="{{ route('dashboard.courses.create') }}"><i
+                                        href="{{ route('dashboard.categories.create') }}"><i
                                             class="material-icons text-sm">add</i>
                                         &nbsp;&nbsp;Add
                                     </a>
@@ -58,13 +55,8 @@
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 ID</th>
+                                          
                                                 <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Category</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Image</th>
-                                            <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 name</th>
 
@@ -72,7 +64,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($courses as $index => $course)
+                                        @foreach ($categories as $index => $category)
                                             <tr>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
@@ -83,51 +75,28 @@
                                                     </div>
                                                 </td>
 
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-capitalize">{{ $course->category->name }}</h6>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div>
-                                                            <img src="{{ asset($course->image) }}"
-                                                                class="avatar avatar-sm me-3 border-radius-lg"
-                                                                alt="user1">
-                                                        </div>
-
-                                                    </div>
-                                                </td>
 
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
 
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-capitalize">{{ $course->name }}</h6>
+                                                            <h6 class="mb-0 text-capitalize">{{ $category->name }}</h6>
                                                         </div>
                                                     </div>
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a rel="tooltip" class="btn btn-primary btn-link"
-                                                    href="{{ route('dashboard.courses.lessons', $course) }}"
-                                                    data-original-title="" title="">
-                                                    Lessons
-                                                    <div class="ripple-container"></div>
-                                                </a>
+
 
                                                     <a rel="tooltip" class="btn btn-success btn-link"
-                                                        href="{{ route('dashboard.courses.edit', $course) }}"
+                                                        href="{{ route('dashboard.categories.edit', $category) }}"
                                                         data-original-title="" title="">
                                                         <i class="material-icons">edit</i>
                                                         <div class="ripple-container"></div>
                                                     </a>
 
                                                     <form
-                                                        action="{{ route('dashboard.courses.destroy', $course) }}"
+                                                        action="{{ route('dashboard.categories.destroy', $category) }}"
                                                         method="POST" style="  display: unset;">
                                                         @csrf
                                                         @method('delete')
