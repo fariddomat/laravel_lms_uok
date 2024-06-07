@@ -43,7 +43,7 @@
                     <h3 class="mb-2">الملفات</h3>
                     <ul class="list-group">
                         @foreach ($lesson->lesson_files as $file)
-                            <li class="list-group-item"><a href="{{ asset('storage/' . $file->path) }}">{{ $file->title }}</a></li>
+                            <li class="list-group-item"><a href="{{ asset( $file->path) }}">{{ $file->title }}</a></li>
                         @endforeach
                     </ul>
                 </div>

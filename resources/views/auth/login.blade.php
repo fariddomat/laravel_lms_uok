@@ -54,6 +54,8 @@
 
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-2 register-btn rounded">سجل</button>
+                                <a  class=" btn btn-secondary register-btn rounded" href="{{ route('register') }}" style="padding-left: 35px; padding-right: 35px; margin-top: 8px">حساب جديد</a>
+
                             </form>
                         </div>
                     </div>
