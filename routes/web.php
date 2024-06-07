@@ -94,6 +94,9 @@ Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(func
 Route::middleware(['role:admin'])->prefix('dashboard')->name('dashboard.')->group(function () {
     // Routes accessible only to admins
 
+
+Route::get('/statistics', [Dashboard\HomeController::class, 'statistics'])->name('statistics.index');
+
     Route::resource('users', Dashboard\UserController::class);
     Route::get('/contact', [Dashboard\HomeController::class, 'contact'])->name('contact');
 
