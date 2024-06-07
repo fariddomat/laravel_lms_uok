@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Course;
@@ -43,12 +44,21 @@ class StudentController extends Controller
     /**
      * Display all courses the authenticated student is enrolled in.
      */
-    public function courses()
+    public function courses(Request $request)
     {
         $user = Auth::user();
+        if ($request->category!='') {
+
+            $courses = Course::where('category_id', $request->category)->get();
+        }else{
+
+
         $courses = $user->studentCourses;
+        }
+        $categories = Category::all();
+
         $latestCourses=Course::latest()->limit(3)->get();
-        return view('home.courses', compact('courses', 'latestCourses'));
+        return view('home.courses', compact('courses', 'latestCourses', 'categories'));
     }
 
     public function accessCourse($courseId)

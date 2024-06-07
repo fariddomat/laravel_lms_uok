@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\Course;
 use App\Models\Contact;
 use App\Models\Lesson;
@@ -23,13 +24,19 @@ class SiteController extends Controller
         return view('welcome', compact('courses', 'teachers', 'latestCourses'));
     }
 
-    public function courses()
+    public function courses(Request $request)
     {
-        
+        if ($request->category!='') {
+
+            $courses = Course::where('category_id', $request->category)->get();
+        }else{
+
         $courses = Course::all();
+        }
+        $categories = Category::all();
         $latestCourses=Course::latest()->limit(3)->get();
 
-        return view('home.courses', compact('courses', 'latestCourses'));
+        return view('home.courses', compact('courses', 'latestCourses', 'categories'));
     }
 
     public function course($id)
@@ -80,6 +87,11 @@ class SiteController extends Controller
 
     public function postContact(Request $request)
     {
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'message'=>'required',
+        ]);
         Contact::create($request->all());
         return redirect()->route('home');
 

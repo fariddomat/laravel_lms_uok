@@ -154,7 +154,7 @@
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">الدروس</h6>
-                <h1 class="mb-5">الدروس الأكثر طلبا</h1>
+                <h1 class="mb-5">الدروس المضافة حديثا</h1>
             </div>
             <div class="row g-4 justify-content-center">
                 @foreach ($latestCourses as $index=>$course)
@@ -168,20 +168,11 @@
                             </div>
                         </div>
                         <div class="text-center p-4 pb-0">
-                            <h3 class="mb-0">$149.00</h3>
-                            <div class="mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small>(123)</small>
-                            </div>
+
                             <h5 class="mb-4">{{ $course->name }}</h5>
                         </div>
                         <div class="d-flex border-top">
                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>{{ $course->teachers->first()->name??'' }}</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 ساعة</small>
                             <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>{{ $course->students->count() }} طالب</small>
                         </div>
                     </div>
