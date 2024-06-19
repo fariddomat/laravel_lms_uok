@@ -60,8 +60,8 @@
                                             <tr>
                                                 <td>{{ $comment->id }}</td>
                                                 <td>{{ $comment->comment }}</td>
-                                                <td>{{ $comment->user->name }}</td>
-                                                <td>{{ $comment->lesson->title }} - {{ $comment->lesson->course->name }}</td>
+                                                <td>{{ $comment->user?->name }}</td>
+                                                <td>{{ $comment->lesson?->title }} - {{ $comment->lesson->course->name }}</td>
                                                 <td>
                                                      <form action="{{ route('dashboard.comments.destroy', $comment->id) }}" method="POST" style="display:inline;">
                                                         @csrf
