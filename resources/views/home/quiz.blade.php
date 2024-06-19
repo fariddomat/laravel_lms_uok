@@ -28,7 +28,9 @@
                         <h6 class="section-title bg-white text-center text-primary px-3">الاختبار</h6>
                         <h1 class="mb-5">قائمة الاختبارات</h1>
                     </div>
-
+                    @error('message')
+                    <p class='text-danger inputerror'>{{ $message }} </p>
+                @enderror
                     <form id="quiz-form" class="row" action="{{ route('quizzes.submit', $lesson->id) }}" method="POST">
                         @csrf
                         @foreach ($quizzes as $index => $quiz)

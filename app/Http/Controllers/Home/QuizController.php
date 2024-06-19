@@ -21,18 +21,29 @@ class QuizController extends Controller
     public function submit(Request $request, $lessonId)
     {
         $quizzes = Quiz::where('lesson_id', $lessonId)->get();
+        if ($request->quiz) {
+            if (count($request->quiz) != $quizzes->count()) {
 
-        foreach ($quizzes as $quiz) {
-            $selectedOption = $request->input("quiz.{$quiz->id}");
-            $isCorrect = $selectedOption == $quiz->correct_option;
+                return redirect()->back()->withErrors(['message' => ' please fill all fields']);
+            } else {
 
-            UserQuiz::create([
-                'user_id' => auth()->id(),
-                'quiz_id' => $quiz->id,
-                'selected_option' => $selectedOption,
-                'is_correct' => $isCorrect,
-            ]);
+                foreach ($quizzes as $quiz) {
+                    $selectedOption = $request->input("quiz.{$quiz->id}");
+                    $isCorrect = $selectedOption == $quiz->correct_option;
+
+                    UserQuiz::create([
+                        'user_id' => auth()->id(),
+                        'quiz_id' => $quiz->id,
+                        'selected_option' => $selectedOption,
+                        'is_correct' => $isCorrect,
+                    ]);
+                }
+            }
+        }else{
+            return redirect()->back()->withErrors(['message' => ' please fill all fields']);
+
         }
+
 
         return redirect()->route('lessons.show', $lessonId)
             ->with('success', 'Quiz submitted successfully!');

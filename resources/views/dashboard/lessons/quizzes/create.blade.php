@@ -18,9 +18,9 @@
 
                             <select name="correct_option" class="form-control border border-2 p-2">
                                 <option value="1">1</option>
-                                <option value="1">2</option>
-                                <option value="1">3</option>
-                                <option value="1">4</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
                             </select>
                             @error('correct_option')
                                 <p class='text-danger inputerror'>{{ $message }} </p>

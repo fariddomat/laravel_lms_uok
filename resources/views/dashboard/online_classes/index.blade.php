@@ -52,8 +52,8 @@
                             @foreach ($online_classes as $online_classe)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $online_classe->course->name }}</td>
-                                    <td>{{ $online_classe->user->name }}</td>
+                                    <td>{{ $online_classe->course?->name }}</td>
+                                    <td>{{ $online_classe->user?->name }}</td>
                                     <td>{{ $online_classe->topic }}</td>
                                     <td>{{ $online_classe->start_at }}</td>
                                     <td>{{ $online_classe->duration }}</td>
